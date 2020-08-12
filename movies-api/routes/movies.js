@@ -42,19 +42,17 @@ const moviesApi = (app) => {
     }
   });
 
-  router.post('/', async (req, res, next) => {
-
-    const { body: movie }  = req;  
-
+  router.post('/', async function (req, res, next) {
+    const { body: movie } = req;
     try {
-      const createMovieId = await  movieService.createMovie({ movie });
+      const createdMovieId = await movieService.createMovie({ movie });
 
-      res.status(200).json({
-        data: createMovieId,
-        message: 'movies created',
+      res.status(201).json({
+        data: createdMovieId,
+        message: 'movie created',
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   });
 
@@ -88,7 +86,7 @@ const moviesApi = (app) => {
       next(error);
     }
   });
-
+  
   router.patch('/:movieId', async (req, res, next) => {
     const { movieId } = req.params;
     const { body: movie } = req;
