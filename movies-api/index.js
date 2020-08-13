@@ -2,16 +2,32 @@ const express = require('express');
 const app = express();
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies');
+const { logErrors, errorHandler, wrapErrors } = require('./utils/middleware/errorHandlers');
+const validationHandler = require('./utils/middleware/notFoundHandler')
+;
 
+/* middlewares */
 
 app.use(express.json());
+//routes
+moviesApi(app);
+
+//404 error handler
+app.use(validationHandler);
+
+//error mw
+app.use(logErrors);
+app.use(wrapErrors);
+app.use(errorHandler);
+
+
 
 app.listen(config.port, () => {
   console.log(`listening on port ${config.port}`);
 });
 
 
-moviesApi(app);
+
 
 
 
