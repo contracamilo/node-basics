@@ -164,9 +164,26 @@ const moviesMock = [
 		"source": "https://stumbleupon.com/odio/condimentum/id.png?rhoncus=nulla&mauris=tempus&enim=vivamus&leo=in&rhoncus=felis&sed=eu&vestibulum=sapien&sit=cursus&amet=vestibulum&cursus=proin&id=eu&turpis=mi&integer=nulla&aliquet=ac&massa=enim&id=in&lobortis=tempor&convallis=turpis&tortor=nec&risus=euismod&dapibus=scelerisque&augue=quam&vel=turpis&accumsan=adipiscing&tellus=lorem&nisi=vitae&eu=mattis&orci=nibh&mauris=ligula&lacinia=nec&sapien=sem&quis=duis&libero=aliquam&nullam=convallis&sit=nunc&amet=proin&turpis=at&elementum=turpis&ligula=a&vehicula=pede&consequat=posuere&morbi=nonummy&a=integer&ipsum=non&integer=velit&a=donec&nibh=diam&in=neque&quis=vestibulum&justo=eget&maecenas=vulputate&rhoncus=ut&aliquam=ultrices&lacus=vel&morbi=augue&quis=vestibulum&tortor=ante&id=ipsum&nulla=primis&ultrices=in&aliquet=faucibus&maecenas=orci&leo=luctus&odio=et",
 		"tags": ["Drama|Romance", "Action|Fantasy|Thriller"]
 	}
-]
+];
 
+
+//filter mock by tag
+const filteredMoviesMock = (tag) => moviesMock.filter (movie => movie.tags.includes (tag));
+
+
+//mock service Class for test
+class MoviesServiceMock {
+  async getMovies () {
+    return Promise.resolve(moviesMock);
+  }
+
+  async createMovie () {
+    return Promise.resolve(moviesMock[0]);
+  }
+}
 
 module.exports = {
-    moviesMock
+  moviesMock,
+  filteredMoviesMock,
+  MoviesServiceMock,
 };
