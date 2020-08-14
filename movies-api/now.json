@@ -20,7 +20,7 @@
     ],
     "env": {
       "DB_USER": "@movies-db-user",
-      "DB_PASS": "@movies-db-pass",
+      "DB_PASSWORD": "@movies-db-pass",
       "DB_HOST": "@movies-db-host",
       "DB_NAME": "@movies-db-name"
     }
